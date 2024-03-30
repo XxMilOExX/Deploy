@@ -3,6 +3,7 @@ package Spring.Deploy.controller;
 import Spring.Deploy.model.Deploy;
 import Spring.Deploy.service.DeployService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @RequestMapping("/api/v1/deploy")
 @AllArgsConstructor
 public class DeployController {
+    @Autowired
     private final DeployService service;
     @GetMapping
     public List<Deploy> findAllDeploy()
@@ -24,9 +26,9 @@ public class DeployController {
         return "Deploy successfully saved";
     }
     @PostMapping("load_deploy_xml")
-    public List<Deploy> loadDeploysFromXmlFile(@RequestBody List<Deploy> deploys)
+    public List<Deploy> loadDeploysFromXmlFile()
     {
-        return service.loadDeploysFromXmlFile(deploys);
+        return service.loadDeploysFromXmlFile();
     }
     @GetMapping("/{tracking_number}")
     public Deploy findByTrackNumb(@PathVariable String tracking_number){

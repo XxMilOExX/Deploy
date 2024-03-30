@@ -37,7 +37,7 @@ public class InMemoryDeployService implements DeployService {
 
 
     @Override
-    public List<Deploy> loadDeploysFromXmlFile(List<Deploy> deploys){
+    public List<Deploy> loadDeploysFromXmlFile(){
         return repository.loadDeploysFromXmlFile();
     }
 
