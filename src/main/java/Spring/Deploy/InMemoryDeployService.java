@@ -35,10 +35,6 @@ public class InMemoryDeployService implements DeployService {
         repository.deleteDeploy(tracking_number);
     }
 
-    @Override
-    public void saveDeploysToXmlFile(List<Deploy> deploys){
-        repository.saveDeploysToXmlFile(deploys);
-    }
 
     @Override
     public List<Deploy> loadDeploysFromXmlFile(List<Deploy> deploys){

@@ -28,11 +28,6 @@ public class DeployController {
     {
         return service.loadDeploysFromXmlFile(deploys);
     }
-    @PostMapping("save_deploy_xml")
-    public void saveDeploysToXmlFile(@RequestBody List<Deploy> deploys)
-    {
-        service.saveDeploysToXmlFile(deploys);
-    }
     @GetMapping("/{tracking_number}")
     public Deploy findByTrackNumb(@PathVariable String tracking_number){
         return service.findByTrackNumb(tracking_number);

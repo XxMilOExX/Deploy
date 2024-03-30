@@ -15,7 +15,6 @@ public interface DeployService {
 
     void deleteDeploy(String tracking_number);
 
-    void saveDeploysToXmlFile(List<Deploy> deploys);
 
     List<Deploy> loadDeploysFromXmlFile(List<Deploy> deploys);
 }
