@@ -129,7 +129,7 @@ public class InMamoryDeployDAO {
         return deployList;
     }
 
-    public void saveDeploysToXmlFile(Deploy deploys) {
+    public void saveDeploysToXmlFile() {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -138,7 +138,7 @@ public class InMamoryDeployDAO {
             Element root = doc.createElement("Deploys");
             doc.appendChild(root);
 
-            for (Deploy deploy : deploys) {
+            for (Deploy deploy : DEPLOYS) {
                 Element deployElement = doc.createElement("Deploy");
                 root.appendChild(deployElement);
 
@@ -167,7 +167,8 @@ public class InMamoryDeployDAO {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("DeploysFile.xml"));
+            File file = new File("DeploysFile.xml");
+            StreamResult result = new StreamResult(file);
             transformer.transform(source, result);
 
         } catch (Exception e) {
