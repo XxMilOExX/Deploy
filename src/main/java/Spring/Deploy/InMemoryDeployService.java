@@ -1,16 +1,17 @@
 package Spring.Deploy;
 
 import Spring.Deploy.model.Deploy;
-import Spring.Deploy.repository.InMamoryDeployDAO;
+import Spring.Deploy.repository.InMemoryDeployDAO;
 import Spring.Deploy.service.DeployService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class InMemoryDeployService implements DeployService {
-    private final InMamoryDeployDAO repository;
+    private final InMemoryDeployDAO repository;
     @Override
     public List<Deploy> findAllDeploy() {
         return repository.findAllDeploy();
@@ -20,6 +21,7 @@ public class InMemoryDeployService implements DeployService {
     public Deploy saveDeploy(Deploy deploy) {
         return repository.saveDeploy(deploy);
     }
+
 
     @Override
     public Deploy findByTrackNumb(String tracking_number) {
@@ -36,10 +38,7 @@ public class InMemoryDeployService implements DeployService {
     }
 
 
-    @Override
-    public List<Deploy> loadDeploysFromXmlFile(){
-        return repository.loadDeploysFromXmlFile();
-    }
+
     @Override
     public void saveDeploysToXmlFile(){
 

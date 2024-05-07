@@ -1,11 +1,9 @@
-<root>
-    <Deploys>
-        <Deploy>
-            <Tracking_nuber>1234</Tracking_nuber>
-            <Adress_Off_Sender>Pushkina 12</Adress_Off_Sender>
-            <Adress_Off_Appoint>Gogola 41</Adress_Off_Appoint>
-            <Status>Devilered</Status>
-            <Date_Of_Depature>12:03:2024</Date_Of_Depature>
-        </Deploy>
-    </Deploys>
-</root>
+<Deploys>
+    <Deploy>
+        <Tracking_number>768654</Tracking_number>
+        <Address_Off_Sender>Pushkina 12</Address_Off_Sender>
+        <Address_Off_Appoint>Gogola 41</Address_Off_Appoint>
+        <Status>Delivered</Status>
+        <Date_Of_Delivery>12:03:2024</Date_Of_Delivery>
+    </Deploy>
+</Deploys>

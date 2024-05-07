@@ -25,11 +25,6 @@ public class DeployController {
         service.saveDeploy(deploy);
         return "Deploy successfully saved";
     }
-    @PostMapping("load_deploy_xml")
-    public List<Deploy> loadDeploysFromXmlFile()
-    {
-        return service.loadDeploysFromXmlFile();
-    }
     @GetMapping("save_deploy_xml")
     public void saveDeployXml()
     {

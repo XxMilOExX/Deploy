@@ -15,4 +15,5 @@ public class DeployApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DeployApplication.class, args);
 	}
+
 }
