@@ -2,6 +2,7 @@ package Spring.Deploy.Parse;
 
 import Spring.Deploy.model.Deploy;
 import Spring.Deploy.model.Root;
+import Spring.Deploy.repository.InMemoryDeployDAO;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -20,7 +21,6 @@ public class SaxParserHandler extends DefaultHandler {
 
     public List<Deploy> deploy = new ArrayList<>();
     Root root = new Root(deploy);
-
     private String currentTagName;
     private boolean IsDeploys = false;
     private boolean IsDeploy = false;
@@ -34,6 +34,11 @@ public class SaxParserHandler extends DefaultHandler {
     public Root getRoot(){
         return root;
     }
+
+    public List<Deploy> getDeploy() {
+        return deploy;
+    }
+
     @Override
     public void startDocument() throws SAXException {
         //System.out.println("Start");
@@ -70,9 +75,6 @@ public class SaxParserHandler extends DefaultHandler {
         }
 
         currentTagName = null;
-    }
-    public List<Deploy> returnDep(){
-        return deploy;
     }
 
     @Override

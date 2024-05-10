@@ -6,4 +6,11 @@
         <Status>Delivered</Status>
         <Date_Of_Delivery>12:03:2024</Date_Of_Delivery>
     </Deploy>
+    <Deploy>
+        <Tracking_number>768654</Tracking_number>
+        <Address_Off_Sender>Pushkina 12</Address_Off_Sender>
+        <Address_Off_Appoint>Gogola 41</Address_Off_Appoint>
+        <Status>Delivered</Status>
+        <Date_Of_Delivery>12:03:2024</Date_Of_Delivery>
+    </Deploy>
 </Deploys>

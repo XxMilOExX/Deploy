@@ -3,15 +3,25 @@ import Spring.Deploy.Parse.SaxxParser;
 import Spring.Deploy.model.Root;
 
 import Spring.Deploy.model.Deploy;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+
 @Repository
 public class InMemoryDeployDAO {
-    private final List<Deploy> DEPLOYS = new ArrayList<>();
+
+    SaxxParser parser = new SaxxParser();
+    List<Deploy> root = parser.parse();
+    private  List<Deploy> DEPLOYS = root;
 
 
     public List<Deploy> findAllDeploy() {
@@ -19,7 +29,15 @@ public class InMemoryDeployDAO {
     }
 
     public Deploy saveDeploy(Deploy deploy) {
-        DEPLOYS.add(deploy);
+        try {
+            DEPLOYS.add(deploy);
+            JAXBContext context = JAXBContext.newInstance(Deploy.class);
+            Marshaller marshaller = context.createMarshaller();
+            File file = new File("DeploysFile.xml");
+            marshaller.marshal(DEPLOYS, file);
+        } catch (JAXBException e) {
+            System.out.println(e.toString());
+        }
         return deploy;
     }
 
@@ -44,14 +62,6 @@ public class InMemoryDeployDAO {
         return null;
     }
 
-    public String loadDeploysFromXmlFile() {
-        SaxxParser parser = new SaxxParser();
-        Root root = parser.parse();
-        return root.toString();
-    }
-
-    public void saveDeploysToXmlFile() {
-    }
 }
 
 
