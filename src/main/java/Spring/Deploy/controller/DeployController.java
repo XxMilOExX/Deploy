@@ -37,13 +37,13 @@ public class DeployController {
     public Deploy findByTrackNumb(@PathVariable String tracking_number){
         return service.findByTrackNumb(tracking_number);
     }
-    @PutMapping("update_student")
+    @PutMapping("update_deploy")
     public Deploy updateDeploy(@RequestBody Deploy deploy)
     {
         return service.updateDeploy(deploy);
     }
-    @DeleteMapping("delete_deploy/{tracking_number}")
-    public void deleteDeploy(@PathVariable String tracking_number){
-        service.deleteDeploy(tracking_number);
+    @PutMapping("delete_deploy")
+    public Deploy deleteDeploy(@RequestBody Deploy deploy){
+       return service.deleteDeploy(deploy);
     }
 }

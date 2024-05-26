@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class InMemoryDeployService implements DeployService {
     private final InMemoryDeployDAO repository;
+
     @Override
     public List<Deploy> findAllDeploy() {
         return repository.findAllDeploy();
@@ -38,8 +39,8 @@ public class InMemoryDeployService implements DeployService {
         return repository.updateDeploy(deploy);
     }
     @Override
-    public void deleteDeploy(String tracking_number) {
-        repository.deleteDeploy(tracking_number);
+    public Deploy deleteDeploy(Deploy deploy) {
+       return repository.deleteDeploy(deploy);
     }
 
 }

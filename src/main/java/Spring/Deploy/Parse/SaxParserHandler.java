@@ -12,12 +12,12 @@ import java.util.List;
 
 public class SaxParserHandler extends DefaultHandler {
     private static final String TAG_DEPLOY_MAIN = "Deploys";
-    private static final String TAG_DEPLOY = "Deploy";
-    private static final String TAG_TRACKING = "Tracking_number";
-    private static final String TAG_SEND = "Address_Off_Sender";
-    private static final String TAG_APPOINT = "Address_Off_Appoint";
-    private static final String TAG_STATUS = "Status";
-    private static final String TAG_DATE = "Date_Of_Delivery";
+    private static final String TAG_DEPLOY = "deploy";
+    private static final String TAG_TRACKING = "tracking_number";
+    private static final String TAG_SEND = "address_Off_Sender";
+    private static final String TAG_APPOINT = "address_Off_Appointment";
+    private static final String TAG_STATUS = "status";
+    private static final String TAG_DATE = "date_Of_Dep";
 
     public List<Deploy> deploy = new ArrayList<>();
     Root root = new Root(deploy);

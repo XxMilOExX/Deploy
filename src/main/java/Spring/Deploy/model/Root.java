@@ -13,6 +13,10 @@ public class Root {
     public Root() {
     }
 
+    public void setDeploy(List<Deploy> deploy) {
+        this.deploy = deploy;
+    }
+
     public Root(List<Deploy> deploy) {
         this.deploy = deploy;
     }
