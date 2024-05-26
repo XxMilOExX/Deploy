@@ -1,19 +1,20 @@
 package Spring.Deploy.repository;
 import Spring.Deploy.Parse.SaxxParser;
-import Spring.Deploy.model.Root;
 
 import Spring.Deploy.model.Deploy;
-import lombok.Getter;
-import lombok.Setter;
+import Spring.Deploy.model.Root;
 import org.springframework.stereotype.Repository;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.PropertyException;
 import java.io.File;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.stream.IntStream;
+
 
 
 @Repository
@@ -28,17 +29,45 @@ public class InMemoryDeployDAO {
         return DEPLOYS;
     }
 
-    public Deploy saveDeploy(Deploy deploy) {
+
+    public String saveDeploy(Deploy deploy) {
+        // Создание контекста для маршаллизации
+        JAXBContext jaxbContext = null;
         try {
-            DEPLOYS.add(deploy);
-            JAXBContext context = JAXBContext.newInstance(Deploy.class);
-            Marshaller marshaller = context.createMarshaller();
-            File file = new File("DeploysFile.xml");
-            marshaller.marshal(DEPLOYS, file);
+            jaxbContext = JAXBContext.newInstance(Root.class);
         } catch (JAXBException e) {
-            System.out.println(e.toString());
+            throw new RuntimeException(e);
         }
-        return deploy;
+
+        // Создание маршаллизатора
+        Marshaller marshaller = null;
+        try {
+            marshaller = jaxbContext.createMarshaller();
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Установка форматирования вывода
+        try {
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        } catch (PropertyException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Создание объекта Root с данными
+
+        Root root = new Root(List.of(deploy));
+
+        // Запись данных в XML-файл
+        try {
+            marshaller.marshal(root, new FileOutputStream("DeploysFile.xml", true));
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return "Deploy successfully saved";
     }
 
     public Deploy findByTrackNumb(String trackingNumber) {

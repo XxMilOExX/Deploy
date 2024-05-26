@@ -1,16 +1,9 @@
 <Deploys>
-    <Deploy>
-        <Tracking_number>768654</Tracking_number>
-        <Address_Off_Sender>Pushkina 12</Address_Off_Sender>
-        <Address_Off_Appoint>Gogola 41</Address_Off_Appoint>
-        <Status>Delivered</Status>
-        <Date_Of_Delivery>12:03:2024</Date_Of_Delivery>
-    </Deploy>
-    <Deploy>
-        <Tracking_number>768654</Tracking_number>
-        <Address_Off_Sender>Pushkina 12</Address_Off_Sender>
-        <Address_Off_Appoint>Gogola 41</Address_Off_Appoint>
-        <Status>Delivered</Status>
-        <Date_Of_Delivery>12:03:2024</Date_Of_Delivery>
-    </Deploy>
+    <deploy>
+        <address_Off_Appointment>Lenina 14</address_Off_Appointment>
+        <address_Off_Sender>Nancena 1</address_Off_Sender>
+        <date_Of_Dep>13:01:2023</date_Of_Dep>
+        <status>devilered</status>
+        <tracking_number>224</tracking_number>
+    </deploy>
 </Deploys>

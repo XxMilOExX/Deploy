@@ -18,8 +18,13 @@ public class InMemoryDeployService implements DeployService {
     }
 
     @Override
-    public Deploy saveDeploy(Deploy deploy) {
+    public String saveDeploy(Deploy deploy) {
         return repository.saveDeploy(deploy);
+    }
+
+    @Override
+    public void writeDeploysToXml(List<Deploy> deploy) {
+
     }
 
 
@@ -35,13 +40,6 @@ public class InMemoryDeployService implements DeployService {
     @Override
     public void deleteDeploy(String tracking_number) {
         repository.deleteDeploy(tracking_number);
-    }
-
-
-
-    @Override
-    public void saveDeploysToXmlFile(){
-
     }
 
 }

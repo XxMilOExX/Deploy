@@ -1,9 +1,14 @@
 package Spring.Deploy.model;
+import com.sun.xml.txw2.annotation.XmlElement;
+import lombok.Getter;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement
+// Other necessary imports
+
+@Getter
+@XmlRootElement(name = "Deploy")
 public class Deploy {
+
     private String Tracking_number;
     private String Address_Off_Sender;
     private String Address_Off_Appointment;
@@ -17,48 +22,29 @@ public class Deploy {
         Status = status;
         Date_Of_Dep = date_Of_Dep;
     }
+    public Deploy(){}
 
-    public String getTracking_number() {
-        return Tracking_number;
-    }
 
-    public String getAddress_Off_Sender() {
-        return Address_Off_Sender;
-    }
-
-    public String getAddress_Off_Appointment() {
-        return Address_Off_Appointment;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public String getDate_Of_Dep() {
-        return Date_Of_Dep;
-    }
-
-    @XmlElement
     public void setTracking_number(String tracking_number) {
         Tracking_number = tracking_number;
     }
 
-    @XmlElement
+
     public void setAddress_Off_Sender(String address_Off_Sender) {
         Address_Off_Sender = address_Off_Sender;
     }
 
-    @XmlElement
+
     public void setAddress_Off_Appointment(String address_Off_Appointment) {
         Address_Off_Appointment = address_Off_Appointment;
     }
 
-    @XmlElement
+
     public void setStatus(String status) {
         Status = status;
     }
 
-    @XmlElement
+
     public void setDate_Of_Dep(String date_Of_Dep) {
         Date_Of_Dep = date_Of_Dep;
     }

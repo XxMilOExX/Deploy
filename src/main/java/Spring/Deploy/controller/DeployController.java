@@ -1,11 +1,19 @@
 package Spring.Deploy.controller;
 
 import Spring.Deploy.model.Deploy;
+import Spring.Deploy.model.Root;
 import Spring.Deploy.service.DeployService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.PropertyException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.List;
 
 @RestController
@@ -14,21 +22,16 @@ import java.util.List;
 public class DeployController {
     @Autowired
     private final DeployService service;
+    @Autowired
     @GetMapping
     public List<Deploy> findAllDeploy()
     {
         return service.findAllDeploy();
     }
+    // Сохранение данных полученных с помощью метода saveDeploy
     @PostMapping("save_deploy")
-    public String saveDeploy(@RequestBody Deploy deploy)
-    {
-        service.saveDeploy(deploy);
-        return "Deploy successfully saved";
-    }
-    @GetMapping("save_deploy_xml")
-    public void saveDeployXml()
-    {
-        service.saveDeploysToXmlFile();
+    public String saveDeploy(@RequestBody Deploy deploy) {
+       return service.saveDeploy(deploy);
     }
     @GetMapping("/{tracking_number}")
     public Deploy findByTrackNumb(@PathVariable String tracking_number){
