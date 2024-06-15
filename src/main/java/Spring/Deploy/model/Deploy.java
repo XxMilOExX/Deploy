@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Deploy")
 public class Deploy {
 
+    @Getter
     private String Tracking_number;
     private String Address_Off_Sender;
     private String Address_Off_Appointment;
@@ -23,7 +24,6 @@ public class Deploy {
         Date_Of_Dep = date_Of_Dep;
     }
     public Deploy(){}
-
 
     public void setTracking_number(String tracking_number) {
         Tracking_number = tracking_number;

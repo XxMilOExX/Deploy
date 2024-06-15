@@ -1,19 +1,12 @@
 package Spring.Deploy.controller;
 
 import Spring.Deploy.model.Deploy;
-import Spring.Deploy.model.Root;
 import Spring.Deploy.service.DeployService;
+import jakarta.ws.rs.QueryParam;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.PropertyException;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.List;
 
 @RestController
@@ -27,6 +20,15 @@ public class DeployController {
     public List<Deploy> findAllDeploy()
     {
         return service.findAllDeploy();
+    }
+    @GetMapping("/student/info")
+    public String getStudentInfo() {
+        return "ФИО студента: Валитов Ренат Шамилевич" + "\n" +
+                "Группа: УИС-211" + "\n" +
+                "Номер варианта: 1.27" + "\n" +
+                "Название проекта: Почтовые отправления" + "\n" +
+                "Версия Java: 21" + "\n" +
+                "Текущий год: 2024";
     }
     // Сохранение данных полученных с помощью метода saveDeploy
     @PostMapping("save_deploy")
@@ -43,7 +45,13 @@ public class DeployController {
         return service.updateDeploy(deploy);
     }
     @PutMapping("delete_deploy")
-    public Deploy deleteDeploy(@RequestBody Deploy deploy){
-       return service.deleteDeploy(deploy);
+    public Deploy deleteDeploy(@RequestParam("tracking_number") String trackingNumber) {
+        return service.deleteDeploy(trackingNumber);
+    }
+
+    @GetMapping("assim")
+    public double Assimetry()
+    {
+        return service.assimmetry();
     }
 }

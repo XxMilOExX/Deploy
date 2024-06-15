@@ -11,5 +11,6 @@ public interface DeployService {
     String saveDeploy(Deploy deploy);
     Deploy findByTrackNumb(String tracking_number);
     Deploy updateDeploy(Deploy deploy);
-    Deploy deleteDeploy(Deploy deploy);
+    Deploy deleteDeploy(String tracking_number);
+    double assimmetry();
 }

@@ -39,8 +39,13 @@ public class InMemoryDeployService implements DeployService {
         return repository.updateDeploy(deploy);
     }
     @Override
-    public Deploy deleteDeploy(Deploy deploy) {
-       return repository.deleteDeploy(deploy);
+    public Deploy deleteDeploy(String tracking_number) {
+       return repository.deleteDeploy(tracking_number);
+    }
+
+    @Override
+    public double assimmetry() {
+        return repository.How1InTr();
     }
 
 }
